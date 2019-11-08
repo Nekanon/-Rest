@@ -49,10 +49,10 @@ namespace Serenity
 
             //app.UseHttpsRedirection();
 
-            app.UseRouting();
 
             //app.UseAuthorization();
 
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

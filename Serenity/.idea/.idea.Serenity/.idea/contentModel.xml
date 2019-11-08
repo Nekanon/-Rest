@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\Evgen\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
@@ -13,9 +13,10 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="AnyController.cs" t="Include" />
-          <e p="WeatherForecastController.cs" t="Include" />
         </e>
         <e p="DbContexts" t="Include">
+          <e p="Any2Mapper.cs" t="Include" />
+          <e p="Any3Mapper.cs" t="Include" />
           <e p="AnyDbContext.cs" t="Include" />
           <e p="AnyMapper.cs" t="Include" />
         </e>
@@ -25,14 +26,17 @@
         <e p="Interfaces" t="Include">
           <e p="IAnyRepository.cs" t="Include" />
         </e>
-        <e p="Mapper" t="Include" />
         <e p="Migrations" t="Include">
-          <e p="20191028180001_initialMigrate.cs" t="Include" />
-          <e p="20191028180001_initialMigrate.Designer.cs" t="Include" />
+          <e p="20191107201925_initialMigrate.cs" t="Include" />
+          <e p="20191107201925_initialMigrate.Designer.cs" t="Include" />
           <e p="AnyDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Any.cs" t="Include" />
+          <e p="Any2.cs" t="Include" />
+          <e p="Any3.cs" t="Include" />
+          <e p="Any4.cs" t="Include" />
+          <e p="AnyAny4.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -47,7 +51,6 @@
         </e>
         <e p="Serenity.csproj" t="IncludeRecursive" />
         <e p="Startup.cs" t="Include" />
-        <e p="WeatherForecast.cs" t="Include" />
       </e>
       <e p="Serenity.sln" t="IncludeFlat" />
     </e>

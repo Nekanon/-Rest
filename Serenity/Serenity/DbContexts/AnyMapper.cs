@@ -16,7 +16,10 @@ namespace Serenity.DbContexts
             entityTypeBuilder.ToTable("Any");
 
             entityTypeBuilder.Property(x => x.Id).HasColumnName("Guid");
-            entityTypeBuilder.Property(x => x.Id).HasColumnName("Name");
+            entityTypeBuilder.Property(x => x.Name).HasColumnName("Name");
+            entityTypeBuilder.Property(x => x.Stuff).HasColumnName("Stuff");
+            //entityTypeBuilder.Property(x => x.Attributes).HasColumnName("Attributes");
+            //entityTypeBuilder.Property(x => x.Tags).HasColumnName("Tags");
         }
     }
 }

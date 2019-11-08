@@ -39,7 +39,7 @@ namespace Serenity.Implementations
 
         public List<Any> GetAll()
         {
-            return _db.Anies.ToList<Any>();
+            return _db.Anies.ToList();
         }
 
         public Any Update(Guid guid, Any any)

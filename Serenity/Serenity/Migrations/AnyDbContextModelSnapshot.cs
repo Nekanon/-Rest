@@ -17,23 +17,128 @@ namespace Serenity.Migrations
             modelBuilder
                 .HasDefaultSchema("public")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.0.0")
+                .HasAnnotation("ProductVersion", "3.1.0-preview1.19506.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("Serenity.Models.Any", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("Name")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("Any3Id")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
-                        .HasColumnName("Any_Name")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Any");
+                    b.HasIndex("Any3Id");
+
+                    b.ToTable("Anies");
+                });
+
+            modelBuilder.Entity("Serenity.Models.Any2", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AnyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnyId")
+                        .IsUnique();
+
+                    b.ToTable("Anies2");
+                });
+
+            modelBuilder.Entity("Serenity.Models.Any3", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Anies3");
+                });
+
+            modelBuilder.Entity("Serenity.Models.Any4", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Anies4");
+                });
+
+            modelBuilder.Entity("Serenity.Models.AnyAny4", b =>
+                {
+                    b.Property<Guid>("AnyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("Any4Id")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("AnyId", "Any4Id");
+
+                    b.HasIndex("Any4Id");
+
+                    b.ToTable("AnyAnies4");
+                });
+
+            modelBuilder.Entity("Serenity.Models.Any", b =>
+                {
+                    b.HasOne("Serenity.Models.Any3", "Grade")
+                        .WithMany("Anies")
+                        .HasForeignKey("Any3Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Serenity.Models.Any2", b =>
+                {
+                    b.HasOne("Serenity.Models.Any", "InstanceAny")
+                        .WithOne("Stuff")
+                        .HasForeignKey("Serenity.Models.Any2", "AnyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Serenity.Models.AnyAny4", b =>
+                {
+                    b.HasOne("Serenity.Models.Any4", "Any4")
+                        .WithMany("AnyAnies4")
+                        .HasForeignKey("Any4Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Serenity.Models.Any", "Any")
+                        .WithMany("AnyAnies4")
+                        .HasForeignKey("AnyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
